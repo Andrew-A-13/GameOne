@@ -13,9 +13,9 @@ public class Bullet extends Unit implements Attack {
 
     @Override
     public void draw(Graphics g) {
-        double scale = 1;
+        //double scale = 1;
         Graphics2D graphics2D = (Graphics2D) g;
-        graphics2D.scale(1 / scale, 1 / scale);
+        //graphics2D.scale(1 / scale, 1 / scale);
 
         graphics2D.rotate(angle, x + 3 / 2,
                 y + 3 / 2);
@@ -24,7 +24,7 @@ public class Bullet extends Unit implements Attack {
         graphics2D.rotate(-angle, x + 3 / 2,
                 y + 3 / 2);
 
-        graphics2D.scale(scale, scale);
+        //graphics2D.scale(scale, scale);
     }
 
     @Override

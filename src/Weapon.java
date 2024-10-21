@@ -1,20 +1,24 @@
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.abs;
 
-//import static com.sun.tools.doclint.Entity.image;
 
-public class Weapon implements Attack, Drawing, Updating {
+public abstract class Weapon implements Attack, Drawing, Updating {
     public LinkedList<Bullet> bullets;
     int lifetime;
     boolean shooting = false;
+    int speed;
+    double spread;
+    static Random random = new Random();
 
-    public Weapon(int lifetime) {
+    public Weapon(int lifetime, int speed, double spread) {
+        this.speed = speed;
+        this.spread = spread;
         this.bullets = new LinkedList<>();
         this.lifetime = lifetime;
+
     }
 
     @Override
@@ -40,9 +44,8 @@ public class Weapon implements Attack, Drawing, Updating {
         }
     }
 
-    public void shoot(Ship ship, int ticks) {
-        if (shooting) {
-            bullets.add(new Bullet(ship.x, ship.y, 20, ship.angle, 5, ticks));
-        }
-    }
+    public abstract void shoot(Ship ship, int ticks);
+
+
+
 }

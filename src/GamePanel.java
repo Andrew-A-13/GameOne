@@ -25,8 +25,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         try {
             Image image = ImageIO.read(new File("src\\orc.png"));
             Image image2 = ImageIO.read(new File("src\\orcDead.png"));
-            orc = new Ship(150, 150, 30, 0, image, image2, new Weapon(15), 50, 0.25,
-                    new Rectangle(-20, -40, 40, 80));
+            orc = new Ship(150, 150, 30, 0, image, image2, new AutomaticGun(100, 50, 0.05), 100, 0.25,
+                    new Rectangle(-30, -30, 60, 60));
         } catch (IOException e) {
             System.out.println("Облом.");
             throw new RuntimeException(e);
@@ -34,8 +34,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         try {
             Image image = ImageIO.read(new File("src\\ROCKET.png"));
             Image image2 = ImageIO.read(new File("src\\ROCKETDEAD.png"));
-            gnom = new Ship(450, 450, 10, 0, image, image2, new Weapon(100), 100, 1,
-                    new Rectangle(-20, -40, 40, 80));
+            gnom = new Ship(450, 450, 10, 0, image, image2, new Shotgun(12, 30, 0.5), 500, 1,
+                    new Rectangle(-30, -30, 60, 60));
         } catch (IOException e) {
             System.out.println("Облом2.");
             throw new RuntimeException(e);
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(orc.isAlive()) {
+        if (orc.isAlive()) {
             if (e.getKeyCode() == KeyEvent.VK_UP) {
                 orc.direction.up = true;
             }
@@ -76,7 +76,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
             }
         }
 
-        if(gnom.isAlive()) {
+        if (gnom.isAlive()) {
             if (e.getKeyCode() == KeyEvent.VK_W) {
                 gnom.direction.up = true;
             }
